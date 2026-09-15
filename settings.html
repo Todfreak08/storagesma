@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Smart Storage - Settings</title><link rel="stylesheet" href="style.css"><script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-database-compat.js"></script><script src="firebase-config.js"></script><script src="common.js"></script></head><body><header class="top-header"><div class="brand">📦 Smart Storage</div><div class="header-right"><span id="firebaseStatus" class="connection">Connecting...</span></div></header><div class="layout"><aside class="sidebar"><h2>📦 Smart Storage</h2><a href="dashboard.html">🏠 Dashboard</a><a href="history.html">📋 History</a><a href="alerts.html">🚨 Alerts</a><a href="reports.html">📊 Analytics</a><a class="active" href="settings.html">⚙️ Settings</a><a href="profile.html">👤 System Profile</a><a href="about.html">ℹ️ About</a></aside><main class="content"><div class="page-title"><h1>Settings</h1><p>View the ESP32 connection information and Firebase structure.</p></div><section class="card"><h2 style="margin-bottom:15px">ESP32 Connection</h2><div class="metric-grid"><div class="metric"><span class="muted small">Wi-Fi</span><strong id="wifiState">--</strong></div><div class="metric"><span class="muted small">ESP32 IP</span><strong id="espIP">--</strong></div><div class="metric"><span class="muted small">Hostname</span><strong id="hostname">--</strong></div></div></section><section class="card"><h2 style="margin-bottom:12px">Firebase Data Structure</h2><div class="codebox">SmartStorage/
+├── current
+│   ├── date
+│   ├── time
+│   ├── timestamp
+│   ├── temperature
+│   ├── humidity
+│   ├── float
+│   ├── int
+│   ├── string
+│   └── sensor
+├── history/
+│   └── date_time_record/
+└── status/
+    ├── wifiConnected
+    ├── sensorConnected
+    ├── temperature
+    └── humidity</div><p class="muted small" style="margin-top:12px">For compatibility with the earlier website, <b>float</b> contains temperature and <b>int</b> contains rounded humidity. The main dashboard uses the clearer temperature/humidity fields.</p></section><section class="card"><h2 style="margin-bottom:12px">Data Management</h2><p class="muted" style="margin-bottom:14px">Clear all DHT11 history from Firebase and the ESP32's local history.</p><button id="clearAll" class="btn-danger">Clear All History</button></section><div class="footer">Smart Storage Monitoring System</div></main></div><div id="toast" class="toast"></div><script src="settings.js"></script></body></html>

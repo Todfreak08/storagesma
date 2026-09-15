@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAMANTHA P. LANIOG </title>
+<link rel="stylesheet" href="style.css">
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-database-compat.js"></script>
+<script src="firebase-config.js"></script><script src="common.js"></script>
+</head>
+<body>
+<header class="top-header"><div class="brand">📦 SAMANTHA P. LANIOG</div><div class="header-right"><span id="firebaseStatus" class="connection">Connecting...</span></div></header>
+<div class="layout">
+<aside class="sidebar"><h2>📦 SAMANTHA P. LANIOG</h2>
+<a class="active" href="dashboard.html">🏠 Dashboard</a><a href="history.html">📋 History</a><a href="alerts.html">🚨 Alerts</a><a href="reports.html">📊 Analytics</a><a href="settings.html">⚙️ Settings</a><a href="profile.html">👤 System Profile</a><a href="about.html">ℹ️ About</a>
+</aside>
+<main class="content">
+<div class="page-title"><h1>SAMANTHA P. LANIOG </h1><p>Environmental monitoring using ESP32 and DHT11 with Firebase data logging.</p></div>
+
+<section class="sensor-grid">
+<div class="sensor-card"><span class="sensor-icon">🌡️</span><div><span class="label">Temperature</span><strong id="latestTemperature">--</strong></div></div>
+<div class="sensor-card"><span class="sensor-icon">💧</span><div><span class="label">Humidity</span><strong id="latestHumidity">--</strong></div></div>
+<div class="sensor-card"><span class="sensor-icon">📅</span><div><span class="label">Date</span><strong id="latestDate">--</strong></div></div>
+<div class="sensor-card"><span class="sensor-icon">🕒</span><div><span class="label">Time</span><strong id="latestTime">--</strong></div></div>
+</section>
+
+<section class="card control-card">
+<div class="control-row">
+  <div><h2>Data Collection</h2><p class="muted small" id="collectionMessage">Checking ESP32 collection status...</p></div>
+  <label class="switch" aria-label="Start or stop data collection">
+    <input type="checkbox" id="collectionToggle">
+    <span class="slider"></span>
+  </label>
+</div>
+<div class="control-state" id="collectionState">CHECKING...</div>
+</section>
+
+<section class="card"><div class="status-line"><div><strong>ESP32 Status</strong><p id="deviceMessage" class="muted">Waiting for ESP32 data...</p></div><span id="deviceStatus" class="status-pill">WAITING</span></div></section>
+
+<section class="card"><div class="card-heading"><div><h2>Latest Readings</h2><p class="muted small">The most recent DHT11 records stored in Firebase.</p></div><a class="button btn-primary" href="history.html">View Full History</a></div>
+<div class="table-wrap"><table class="table"><thead><tr><th>Date</th><th>Time</th><th>Temperature</th><th>Humidity</th><th>Value</th></tr></thead><tbody id="dataLogBody"><tr><td colspan="5" class="empty">Waiting for ESP32 data...</td></tr></tbody></table></div></section>
+
+<section class="card"><div class="card-heading"><div><h2>Quick Analytics</h2><p class="muted small">Summary of all available DHT11 history.</p></div><a class="button btn-secondary" href="reports.html">Open Analytics</a></div>
+<div class="metric-grid"><div class="metric"><span class="muted small">Records</span><strong id="summaryRecords">0</strong></div><div class="metric"><span class="muted small">Average Temperature</span><strong id="avgTemperature">--</strong></div><div class="metric"><span class="muted small">Average Humidity</span><strong id="avgHumidity">--</strong></div></div></section>
+<div class="footer">SAMANTHA P. LANIOG Monitoring System • ESP32 + DHT11 + Firebase</div>
+</main></div><div id="toast" class="toast"></div><script src="dashboard.js"></script>
+</body></html>

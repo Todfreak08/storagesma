@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14532d">
+<title>Smart Storage - Wi-Fi Manager</title>
+<link rel="stylesheet" href="/wifimanager.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="wifi-card" aria-labelledby="wifi-title">
+      <div class="brand-mark" aria-hidden="true">📶</div>
+      <p class="eyebrow">ESP32 SETUP</p>
+      <h1 id="wifi-title">SMART STORAGE</h1>
+      <h2>Wi-Fi Manager</h2>
+      <p class="subtitle">Connect your ESP32 to your Wi-Fi network to start the Smart Storage monitoring system.</p>
+
+      <form action="/" method="POST" class="wifi-form">
+        <div class="field">
+          <label for="ssid">Wi-Fi Name (SSID)</label>
+          <div class="input-wrap">
+            <span class="input-icon" aria-hidden="true">📡</span>
+            <input type="text" id="ssid" name="ssid" placeholder="Enter your Wi-Fi name" autocomplete="off" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="pass">Wi-Fi Password</label>
+          <div class="input-wrap">
+            <span class="input-icon" aria-hidden="true">🔒</span>
+            <input type="password" id="pass" name="pass" placeholder="Enter your Wi-Fi password" autocomplete="current-password" required>
+            <button type="button" class="password-toggle" id="togglePassword" aria-label="Show password" aria-pressed="false">Show</button>
+          </div>
+        </div>
+
+        <button type="submit" class="connect-button">
+          <span>CONNECT ESP32</span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <div class="info-box">
+        <strong>What happens next?</strong>
+        <p>After you click <b>CONNECT ESP32</b>, the ESP32 saves your Wi-Fi settings and restarts automatically. Reconnect your phone or laptop to the same Wi-Fi network, then open the ESP32 IP shown in Serial Monitor.</p>
+      </div>
+
+      <p class="footer-note">ESP-WIFI-MANAGER &nbsp;•&nbsp; ESP32 + DHT11</p>
+    </section>
+  </main>
+
+  <script>
+    const passwordInput = document.getElementById('pass');
+    const togglePassword = document.getElementById('togglePassword');
+    togglePassword.addEventListener('click', () => {
+      const visible = passwordInput.type === 'text';
+      passwordInput.type = visible ? 'password' : 'text';
+      togglePassword.textContent = visible ? 'Show' : 'Hide';
+      togglePassword.setAttribute('aria-label', visible ? 'Show password' : 'Hide password');
+      togglePassword.setAttribute('aria-pressed', String(!visible));
+    });
+  </script>
+</body>
+</html>

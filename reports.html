@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smart Storage - Analytics</title><link rel="stylesheet" href="style.css">
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-database-compat.js"></script><script src="firebase-config.js"></script><script src="common.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body><header class="top-header"><div class="brand">📦 Smart Storage</div><div class="header-right"><span id="firebaseStatus" class="connection">Connecting...</span></div></header>
+<div class="layout"><aside class="sidebar"><h2>📦 Smart Storage</h2><a href="dashboard.html">🏠 Dashboard</a><a href="history.html">📋 History</a><a href="alerts.html">🚨 Alerts</a><a class="active" href="reports.html">📊 Analytics</a><a href="settings.html">⚙️ Settings</a><a href="profile.html">👤 System Profile</a><a href="about.html">ℹ️ About</a></aside>
+<main class="content"><div class="page-title"><h1>Analytics & Reports</h1><p>Analyze DHT11 temperature and humidity readings stored in Firebase.</p></div>
+
+<section class="card"><div class="filter-row"><div class="field"><label for="reportDate">Select Date</label><input type="date" id="reportDate"></div><div class="filter-actions"><button id="reportToday" class="btn-secondary">Today</button><button id="reportAll" class="btn-secondary">All Dates</button><button id="exportCSV" class="btn-primary">Export CSV</button></div></div></section>
+
+<section class="metric-grid"><div class="metric"><span class="muted small">Records</span><strong id="totalRecords">0</strong></div><div class="metric"><span class="muted small">Average Temperature</span><strong id="avgTemperature">--</strong></div><div class="metric"><span class="muted small">Average Humidity</span><strong id="avgHumidity">--</strong></div><div class="metric"><span class="muted small">Minimum Temperature</span><strong id="minTemperature">--</strong></div><div class="metric"><span class="muted small">Maximum Temperature</span><strong id="maxTemperature">--</strong></div><div class="metric"><span class="muted small">Humidity Range</span><strong id="humidityRange">--</strong></div></section>
+
+<section class="card"><div class="card-heading"><div><h2>Temperature &amp; Humidity History</h2><p class="muted small">Combined DHT11 temperature and humidity trend over time. The graph uses a shared 0–100 scale like the sample analytics view; choose a date to focus on one recording day.</p></div></div><div class="chart-wrap" style="height:560px"><canvas id="environmentChart"></canvas></div></section>
+
+<section class="card"><h2>Report Summary</h2><p id="reportSummary" class="muted" style="margin-top:8px">Loading...</p></section>
+<div class="footer">Smart Storage Monitoring System</div></main></div><script src="reports.js"></script></body></html>
