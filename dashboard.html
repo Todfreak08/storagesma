@@ -16,7 +16,7 @@
 <a class="active" href="dashboard.html">🏠 Dashboard</a><a href="history.html">📋 History</a><a href="alerts.html">🚨 Alerts</a><a href="reports.html">📊 Analytics</a><a href="settings.html">⚙️ Settings</a><a href="profile.html">👤 System Profile</a><a href="about.html">ℹ️ About</a>
 </aside>
 <main class="content">
-<div class="page-title"><h1>SAMANTHA P. LANIOG </h1><p>Environmental monitoring using ESP32 and DHT11 with Firebase data logging.</p></div>
+<div class="page-title"><h1>SAMANTHA P. LANIOG </h1><p>Environmental monitoring using ESP32, DHT11, PIR motion sensor and relays with Firebase data logging.</p></div>
 
 <section class="sensor-grid">
 <div class="sensor-card"><span class="sensor-icon">🌡️</span><div><span class="label">Temperature</span><strong id="latestTemperature">--</strong></div></div>
@@ -36,13 +36,28 @@
 <div class="control-state" id="collectionState">CHECKING...</div>
 </section>
 
+<section class="card">
+<div class="card-heading"><div><h2>PIR Motion Detection</h2><p class="muted small">AM312 motion sensor on GPIO 27 and indicator LED on GPIO 26.</p></div><span id="motionDetected" class="status-pill">WAITING</span></div>
+<div class="metric-grid"><div class="metric"><span class="muted small">Motion</span><strong id="motionState">--</strong></div><div class="metric"><span class="muted small">Indicator LED</span><strong id="motionLedState">--</strong></div></div>
+</section>
+<section class="card relay-card">
+<div class="card-heading"><div><h2>Relay Control</h2><p class="muted small">Control the two relay channels through the ESP32 local web server.</p></div><span id="relayConnection" class="status-pill">CHECKING</span></div>
+<div class="relay-grid">
+ <div class="relay-item"><div><h3>Relay 1</h3><p class="muted small">GPIO 32 · Channel 1</p><strong id="relay1State" class="relay-state">OFF</strong></div><label class="switch"><input type="checkbox" id="relay1Toggle"><span class="slider"></span></label></div>
+ <div class="relay-item"><div><h3>Relay 2</h3><p class="muted small">GPIO 33 · Channel 2</p><strong id="relay2State" class="relay-state">OFF</strong></div><label class="switch"><input type="checkbox" id="relay2Toggle"><span class="slider"></span></label></div>
+</div><p class="muted small relay-note">Commands are handled by this ESP32 web server. Relay events are saved to LittleFS and uploaded to Firebase when connected.</p>
+</section>
 <section class="card"><div class="status-line"><div><strong>ESP32 Status</strong><p id="deviceMessage" class="muted">Waiting for ESP32 data...</p></div><span id="deviceStatus" class="status-pill">WAITING</span></div></section>
 
 <section class="card"><div class="card-heading"><div><h2>Latest Readings</h2><p class="muted small">The most recent DHT11 records stored in Firebase.</p></div><a class="button btn-primary" href="history.html">View Full History</a></div>
 <div class="table-wrap"><table class="table"><thead><tr><th>Date</th><th>Time</th><th>Temperature</th><th>Humidity</th><th>Value</th></tr></thead><tbody id="dataLogBody"><tr><td colspan="5" class="empty">Waiting for ESP32 data...</td></tr></tbody></table></div></section>
 
+<section class="card"><div class="card-heading"><div><h2>Recent PIR Motion History</h2><p class="muted small">Latest motion events detected by the AM312 PIR sensor.</p></div><button class="btn-secondary" id="refreshMotionHistory" type="button">Refresh</button></div><div class="table-wrap"><table class="table"><thead><tr><th>Date</th><th>Time</th><th>Event</th><th>State</th></tr></thead><tbody id="motionHistoryBody"><tr><td colspan="4" class="empty">No motion events recorded yet.</td></tr></tbody></table></div></section>
+
+<section class="card"><div class="card-heading"><div><h2>Recent Relay Activity</h2><p class="muted small">Latest ON/OFF actions recorded by the ESP32.</p></div><button class="btn-secondary" id="refreshRelayHistory" type="button">Refresh</button></div><div class="table-wrap"><table class="table"><thead><tr><th>Date</th><th>Time</th><th>Relay</th><th>Action</th><th>Source</th></tr></thead><tbody id="relayHistoryBody"><tr><td colspan="5" class="empty">No relay activity recorded yet.</td></tr></tbody></table></div></section>
+
 <section class="card"><div class="card-heading"><div><h2>Quick Analytics</h2><p class="muted small">Summary of all available DHT11 history.</p></div><a class="button btn-secondary" href="reports.html">Open Analytics</a></div>
 <div class="metric-grid"><div class="metric"><span class="muted small">Records</span><strong id="summaryRecords">0</strong></div><div class="metric"><span class="muted small">Average Temperature</span><strong id="avgTemperature">--</strong></div><div class="metric"><span class="muted small">Average Humidity</span><strong id="avgHumidity">--</strong></div></div></section>
-<div class="footer">SAMANTHA P. LANIOG Monitoring System • ESP32 + DHT11 + Firebase</div>
+<div class="footer">SAMANTHA P. LANIOG Monitoring System • ESP32 + DHT11 + PIR + Relays + Firebase</div>
 </main></div><div id="toast" class="toast"></div><script src="dashboard.js"></script>
 </body></html>

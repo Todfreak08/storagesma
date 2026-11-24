@@ -26,3 +26,10 @@
 .switch input:checked + .slider:before{transform:translateX(30px);}
 .switch input:disabled + .slider{opacity:.55;cursor:wait;}
 @media(max-width:600px){.control-row{align-items:flex-start;}.switch{margin-top:4px;}}
+
+
+/* Two-channel relay controls and recent event log */
+.relay-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.relay-item{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px;border:1px solid var(--line);border-radius:12px;background:#f9fbfa}
+.relay-item h3{font-size:17px;margin-bottom:5px}.relay-state{display:inline-block;margin-top:9px;font-size:13px;font-weight:800;color:#b91c1c}.relay-state.is-on{color:#15803d}.relay-note{margin-top:14px}
+@media(max-width:720px){.relay-grid{grid-template-columns:1fr}}
